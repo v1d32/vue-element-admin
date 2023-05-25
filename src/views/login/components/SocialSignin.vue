@@ -8,6 +8,22 @@
       <span class="qq-svg-container"><svg-icon icon-class="qq" class="icon" /></span>
       QQ
     </div>
+    <div class="sign-btn" @click="googleHandleClick('tencent')">
+      <span class="gg-svg-container"><svg-icon icon-class="google" class="icon" /></span>
+      Google
+    </div>
+    <div class="sign-btn" @click="facebookHandleClick('tencent')">
+      <span class="fb-svg-container"><svg-icon icon-class="facebook" class="icon" /></span>
+      Facebook
+    </div>
+    <div class="sign-btn" @click="twitterHandleClick('tencent')">
+      <span class="tw-svg-container"><svg-icon icon-class="twitter" class="icon" /></span>
+      Twitter
+    </div>
+    <div class="sign-btn" @click="githubHandleClick('tencent')">
+      <span class="gh-svg-container"><svg-icon icon-class="github" class="icon" /></span>
+      Github
+    </div>
   </div>
 </template>
 
@@ -32,6 +48,38 @@ export default {
       // const redirect_uri = encodeURIComponent('xxx/redirect?redirect=' + window.location.origin + '/auth-redirect')
       // const url = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri
       // openWindow(url, thirdpart, 540, 540)
+    },
+    googleHandleClick(thirdpart) {
+      alert('ok')
+      // this.$store.commit('SET_AUTH_TYPE', thirdpart)
+      // const client_id = 'xxxxx'
+      // const redirect_uri = encodeURIComponent('xxx/redirect?redirect=' + window.location.origin + '/auth-redirect')
+      // const url = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri
+      // openWindow(url, thirdpart, 540, 540)
+    },
+    facebookHandleClick(thirdpart) {
+      alert('ok')
+      // this.$store.commit('SET_AUTH_TYPE', thirdpart)
+      // const client_id = 'xxxxx'
+      // const redirect_uri = encodeURIComponent('xxx/redirect?redirect=' + window.location.origin + '/auth-redirect')
+      // const url = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri
+      // openWindow(url, thirdpart, 540, 540)
+    },
+    twitterHandleClick(thirdpart) {
+      alert('ok')
+      // this.$store.commit('SET_AUTH_TYPE', thirdpart)
+      // const client_id = 'xxxxx'
+      // const redirect_uri = encodeURIComponent('xxx/redirect?redirect=' + window.location.origin + '/auth-redirect')
+      // const url = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri
+      // openWindow(url, thirdpart, 540, 540)
+    },
+    githubHandleClick(thirdpart) {
+      alert('ok')
+      // this.$store.commit('SET_AUTH_TYPE', thirdpart)
+      // const client_id = 'xxxxx'
+      // const redirect_uri = encodeURIComponent('xxx/redirect?redirect=' + window.location.origin + '/auth-redirect')
+      // const url = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri
+      // openWindow(url, thirdpart, 540, 540)
     }
   }
 }
@@ -50,6 +98,10 @@ export default {
       margin-top: 8px;
     }
     .wx-svg-container,
+    .gg-svg-container,
+    .fb-svg-container,
+    .tw-svg-container,
+    .gh-svg-container,
     .qq-svg-container {
       display: inline-block;
       width: 40px;

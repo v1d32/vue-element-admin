@@ -11,6 +11,7 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
+import serviceRouter from './modules/service'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -138,7 +139,7 @@ export const asyncRoutes = [
     meta: {
       title: 'Permission',
       icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
+      roles: ['superadmin', 'admin', 'editor'] // you can set roles in root nav
     },
     children: [
       {
@@ -147,7 +148,7 @@ export const asyncRoutes = [
         name: 'PagePermission',
         meta: {
           title: 'Page Permission',
-          roles: ['admin'] // or you can only set roles in sub nav
+          roles: ['superadmin', 'admin'] // or you can only set roles in sub nav
         }
       },
       {
@@ -165,7 +166,7 @@ export const asyncRoutes = [
         name: 'RolePermission',
         meta: {
           title: 'Role Permission',
-          roles: ['admin']
+          roles: ['superadmin', 'admin']
         }
       }
     ]
@@ -189,6 +190,7 @@ export const asyncRoutes = [
   chartsRouter,
   nestedRouter,
   tableRouter,
+  serviceRouter,
 
   {
     path: '/example',

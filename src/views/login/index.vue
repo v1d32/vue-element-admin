@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">Wellcome</h3>
       </div>
 
       <el-form-item prop="username">
@@ -47,7 +47,7 @@
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
-      <div style="position:relative">
+      <!-- <div style="position:relative">
         <div class="tips">
           <span>Username : admin</span>
           <span>Password : any</span>
@@ -60,7 +60,7 @@
         <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
           Or connect with
         </el-button>
-      </div>
+      </div> -->
     </el-form>
 
     <el-dialog title="Or connect with" :visible.sync="showDialog">
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
+// import { validUsername } from '@/utils/validate'
 import SocialSign from './components/SocialSignin'
 
 export default {
@@ -82,14 +82,14 @@ export default {
   components: { SocialSign },
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
+      if (!value) {
         callback(new Error('Please enter the correct user name'))
       } else {
         callback()
       }
     }
     const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
+      if (!value) {
         callback(new Error('The password can not be less than 6 digits'))
       } else {
         callback()
@@ -97,8 +97,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '111111'
+        username: '',
+        password: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -224,6 +224,7 @@ $cursor: #fff;
     input {
       background: transparent;
       border: 0px;
+      appearance: none;
       -webkit-appearance: none;
       border-radius: 0px;
       padding: 12px 5px 12px 15px;

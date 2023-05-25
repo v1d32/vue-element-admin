@@ -33,10 +33,16 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(response => {
+      login({
+        username: username.trim(),
+        password: password,
+        grant_type: process.env.VUE_APP_API_GRANT_TYPE,
+        client_id: process.env.VUE_APP_API_CLIENT_ID,
+        client_secret: process.env.VUE_APP_API_CLIENT_SECRET
+      }).then(response => {
         const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
+        commit('SET_TOKEN', data.access_token)
+        setToken(data)
         resolve()
       }).catch(error => {
         reject(error)
@@ -53,8 +59,11 @@ const actions = {
         if (!data) {
           reject('Verification failed, please Login again.')
         }
-
-        const { roles, name, avatar, introduction } = data
+        if (data.photo[0] === '/') {
+          data.photo = process.env.VUE_APP_BASE_API + data.photo
+        }
+        data.roles = data.roles.map(d => d.name)
+        const { roles, name, photo, last_logged_in } = data
 
         // roles must be a non-empty array
         if (!roles || roles.length <= 0) {
@@ -63,8 +72,8 @@ const actions = {
 
         commit('SET_ROLES', roles)
         commit('SET_NAME', name)
-        commit('SET_AVATAR', avatar)
-        commit('SET_INTRODUCTION', introduction)
+        commit('SET_AVATAR', photo)
+        commit('SET_INTRODUCTION', last_logged_in)
         resolve(data)
       }).catch(error => {
         reject(error)
